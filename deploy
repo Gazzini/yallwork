@@ -1,0 +1,16 @@
+#!/bin/sh
+set -e
+
+echo 'npx tsc...'
+npx tsc
+
+echo 'syncing to s3'
+    aws s3 sync dist_static/private s3://<> \
+    --delete \
+    --acl private \
+    --exclude *.DS_Store
+
+echo 'invalidating cloudfront cache'
+aws cloudfront create-invalidation --distribution-id <> --paths "/*"
+
+echo '🎉'
