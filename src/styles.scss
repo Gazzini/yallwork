@@ -1,6 +1,12 @@
-$primary-color: white;
-$bg: black;
-h1 {
-  color: $primary-color;
-  background-color: $bg;
+
+.yallpic {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+body {
+  margin:0;
+  text-align: center;
+  background-color: black;
 }
