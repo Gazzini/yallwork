@@ -4,13 +4,16 @@ set -e
 echo 'npx tsc...'
 npx tsc
 
+echo 'building...'
+npm run build-prod
+
 echo 'syncing to s3'
-    aws s3 sync dist_static/private s3://<> \
+    aws s3 sync dist s3://yallwork \
     --delete \
     --acl private \
     --exclude *.DS_Store
 
 echo 'invalidating cloudfront cache'
-aws cloudfront create-invalidation --distribution-id <> --paths "/*"
+aws cloudfront create-invalidation --distribution-id E1ZU2PHJZ0QQEC --paths "/*"
 
 echo '🎉'
